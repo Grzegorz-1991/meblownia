@@ -1,0 +1,32 @@
+<h1>Dodawanie nowego mebla.</h1>
+
+<% if @meble.errors.any? %> 
+  <h2>Nie można zapisać w powodu następujących błędów</h2> 
+  <ul> 
+    <% @meble.errors.full_messages.each do |msg| %> 
+      <li><%= msg %></li> 
+    <% end %> 
+  </ul>
+<% end %>
+
+<%= form_with scope: :meble, url: mebles_path, local: true do |f| %>
+
+<p>
+    <%= f.label :nazwa %><br/>
+    <%= f.text_field :nazwa %>
+</p>
+
+<p>
+    <%= f.label :rodzaj %><br/>
+    <%= f.text_field :rodzaj %>
+</p>
+
+<p>
+    <%= f.label :opis %><br/>
+    <%= f.text_area :opis %>
+</p>
+
+<p>
+    <%= f.submit 'Utwórz' %>
+</p>
+<% end %>

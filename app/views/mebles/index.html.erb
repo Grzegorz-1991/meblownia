@@ -1,0 +1,21 @@
+<h1>Tutaj będzie lista mebli</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Rodzaj</th>
+            <th>Opis</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @mebles.each do |meb|%>
+        <tr>
+            <td><%= meb.nazwa %></td>
+            <td><%= meb.rodzaj %></td>
+            <td><%= meb.opis %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
