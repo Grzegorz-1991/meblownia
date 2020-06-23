@@ -3,3 +3,9 @@
 <p><strong>Nazwa: </strong><%= @meble.nazwa%> </p>
 <p><strong>Rodzaj: </strong><%= @meble.rodzaj%> </p>
 <p><strong>Opis: </strong><%= @meble.opis%> </p>
+
+<p>
+    <%= link_to 'Lista mebli', mebles_path %>
+    <%= link_to 'Do edycji', edit_meble_path %>
+    <%= link_to 'Usuń', meble_path, method: :delete, data: { confirm: "Jesteś pewien?"}%>
+</p>

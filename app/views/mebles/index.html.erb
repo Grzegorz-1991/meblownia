@@ -6,6 +6,7 @@
             <th>Nazwa</th>
             <th>Rodzaj</th>
             <th>Opis</th>
+            <th colspan="3">Działanie</th>
         </tr>
     </thead>
 
@@ -15,7 +16,15 @@
             <td><%= meb.nazwa %></td>
             <td><%= meb.rodzaj %></td>
             <td><%= meb.opis %></td>
+            <td><%= link_to 'Wyświetl', meble_path(meb) %></td>
+            <td><%= link_to 'Edytuj', edit_meble_path(meb) %></td>
+            <td><%= link_to 'Usuń', meble_path(meb), method: :delete, data: { confirm: "Jesteś pewien?"} %></td>
         </tr>
         <% end %>
     </tbody>
 </table>
+
+<p>
+    <%= link_to 'Stwórz nowy mebel', new_meble_path %>
+    <%= link_to 'Strona domowa', root_path %>
+</p>
