@@ -1,0 +1,118 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.navbar {
+
+    background-color: rgb(48, 48, 48) !important;
+    
+    }
+
+.nav-link {
+
+    color: whitesmoke !important;
+    font-weight: 600;
+    font-family: Calibri;
+}
+
+#logo {
+    float: left;
+    color: whitesmoke !important;
+    font-size:  1.7em;
+    font-weight: 600;
+    font-family: Calibri;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.btn {
+    background-color: black !important;
+    background-repeat: repeat-x;
+    background-image: -o-linear-gradient(top, grey,  rgb(60, 102, 72));
+    background-image: linear-gradient(grey, rgb(60, 102, 72));
+    border-color: whitesmoke;
+    color: whitesmoke !important;
+    font-weight: 600;
+    font-family: Calibri;
+}
+
+
+.btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active, .btn-outline-success.active, .open .dropdown-toggle.btn-outline-success {
+background-color: grey !important;
+background-repeat: repeat-x;
+background-image: linear-gradient( rgb(185, 185, 185), rgb(0, 97, 27));
+border-color: whitesmoke;
+color: whitesmoke !important;
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.59);
+font-weight: 600;
+font-family: Calibri;
+}
+
+#przycisk {
+    background-color: olive !important;
+    background-repeat: repeat-x;
+    background-image: -o-linear-gradient(top, maroon maroon);
+    background-image: linear-gradient(maroon maroon);
+    border-color: black;
+    color: rgb(255, 255, 255) !important;
+    font-weight: 600;
+    font-family: Calibri;
+}
+
+#home-container {
+    margin-top: 25px;
+}
+
+.jumbotron {
+    background-image: asset-url('pokolenie.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+}
+
+#naglowek2 {
+    color: rgb(60, 102, 72) !important;
+    font-size:  1.5em;
+    font-weight: 600;
+    font-family: Calibri;
+    letter-spacing: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    background-position: center center;
+    padding:0.5em;
+    display: inline-table;
+    line-height:8px;
+}
+
+#naglowek3 {
+    color: rgb(60, 102, 72) !important;
+    font-size:  1.2em;
+    font-weight: 600;
+    font-family: Calibri;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    background-size: cover !important;
+    letter-spacing: 0px;
+    padding:0.5em;
+    display: inline-table;
+    line-height:8px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color:  GhostWhite;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+  background: GhostWhite;
+}
