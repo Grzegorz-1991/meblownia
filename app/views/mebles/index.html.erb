@@ -1,30 +1,47 @@
-<h1>Tutaj będzie lista mebli</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nazwa</th>
-            <th>Rodzaj</th>
-            <th>Opis</th>
-            <th colspan="3">Działanie</th>
-        </tr>
-    </thead>
+<h1 class = "text-center mt-4">Lista mebli</h1>
 
-    <tbody>
-        <% @mebles.each do |meb|%>
-        <tr>
-            <td><%= meb.nazwa %></td>
-            <td><%= meb.rodzaj %></td>
-            <td><%= meb.opis %></td>
-            <td><%= link_to 'Wyświetl', meble_path(meb) %></td>
-            <td><%= link_to 'Edytuj', edit_meble_path(meb) %></td>
-            <td><%= link_to 'Usuń', meble_path(meb), method: :delete, data: { confirm: "Jesteś pewien?"} %></td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<div class="container">
+    <% @mebles.each do |meb|%>
+        <div class="row justify-content-md-center">
+        <div class="col-8">
+ <div class="card">
+  <div class="card-header">
+            Featured
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Nazwa: <%= meb.nazwa %></h5>
+            <h5 class="card-title">Rodzaj: <%= meb.rodzaj %></h5>
+                <button type="button" class="collapsibles">Opis mebla</button>
+                <div class="content">
+                <p class="card-text">Opis: <%= meb.opis %></p>
+                </div>
+   
+            
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+        </div>
+        </div>
+        </div>
+    <% end %>
+</div>
 
-<p>
-    <%= link_to 'Stwórz nowy mebel', new_meble_path %>
-    <%= link_to 'Strona domowa', root_path %>
-</p>
+<script>
+    var coll = document.getElementsByClassName("collapsibles");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("activek");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+    }
+</script>
