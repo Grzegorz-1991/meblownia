@@ -1,11 +1,48 @@
-<h1>Tutaj będą wyświetlane meble</h1>
 
-<p><strong>Nazwa: </strong><%= @meble.nazwa%> </p>
-<p><strong>Rodzaj: </strong><%= @meble.rodzaj%> </p>
-<p><strong>Opis: </strong><%= @meble.opis%> </p>
+<h2 class = "text-center mt-4"><%= @meble.nazwa %></h2>
 
-<p>
-    <%= link_to 'Lista mebli', mebles_path %>
-    <%= link_to 'Do edycji', edit_meble_path %>
-    <%= link_to 'Usuń', meble_path, method: :delete, data: { confirm: "Jesteś pewien?"}%>
-</p>
+<div class="container">
+        <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+ <div class="card shadow mb-5 bg-white rounded">
+  <div class="card-header font-italic">
+            by El Greju
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Rodzaj: <%= @meble.rodzaj %></h5>
+                <button type="button" class="collapsibles">Opis mebla</button>
+                <div class="content">
+                <div class="card-text text-left"> <%= simple_format(@meble.opis) %></div>
+                </div>
+            <a><%= link_to "Edytuj", edit_meble_path(@meble), class: "btn btn-primary" %></a>
+            <a><%= link_to "Usuń", meble_path(@meble), class: "btn btn-primary", method: :delete, data: {confirm: "Na pewno usunąć?"}  %></a>
+        </div>
+        <div class="card-footer text-muted"> 
+            <a> Stworzono: <%= time_ago_in_words(@meble.created_at) %>, 
+            <% if @meble.update_at == nil %>
+            Nie edytowano
+            <% else %>
+            Edytowano: <%= time_ago_in_words(@meble.update_at) %>
+            <% end %>
+            </a>
+        </div>
+        </div>
+        </div>
+        </div>
+</div>
+<script>
+    var coll = document.getElementsByClassName("collapsibles");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("activek");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+        content.style.maxHeight = null;
+        } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+    }
+</script>

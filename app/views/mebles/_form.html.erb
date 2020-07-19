@@ -1,35 +1,42 @@
 
-<% if @meble.errors.any? %> 
-  <h2>Nie można zapisać w powodu następujących błędów</h2> 
-  <ul> 
-    <% @meble.errors.full_messages.each do |msg| %> 
-      <li><%= msg %></li> 
-    <% end %> 
-  </ul>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-10">
+        <%= render 'shared/errors' %>
+        <%= form_with(model: @meble, class: "shadow p-3 mb-3 bg-secondary rounded", local: true)  do |f| %>
+        <div class="form-group row">
+            <%= f.label :nazwa, class: "col-2 col-form-label text-light" %>
+            <div class="col-10">
+              <%= f.text_field :nazwa, class: "form-control shadow rounded", placeholder: "Nazwa mebla" %>
+            </div>
+        </div>
 
-<%= form_with(model: @meble, local: true)  do |f| %>
+        <div class="form-group row">
+              <%= f.label :rodzaj, class: "col-2 col-form-label text-light" %>
+              <div class="col-10">
+                <%= f.text_field :rodzaj, class: "form-control shadow rounded", placeholder: "Rodzaj mebla" %>
+              </div>
+        </div>
 
-<p>
-    <%= f.label :nazwa %><br/>
-    <%= f.text_field :nazwa %>
-</p>
+          <div class="form-group row">
+              <%= f.label :opis, class: "col-2 col-form-label text-light" %>
+              <div class="col-10"> 
+                <%= f.text_area :opis, rows: 5, class: "form-control shadow rounded", placeholder: "Opis mebla" %>
+              </div>
+          </div>
 
-<p>
-    <%= f.label :rodzaj %><br/>
-    <%= f.text_field :rodzaj %>
-</p>
-
-<p>
-    <%= f.label :opis %><br/>
-    <%= f.text_area :opis %>
-</p>
-
-<p>
-    <% if @akcja == "edit" %>
-        <%= f.submit 'Edytuj' %>
-    <% else %>
-        <%= f.submit 'Utwórz' %>
-    <% end %>
-</p>
-<% end %>
+          <div class="form-group row justify-content-center">
+              <% if @akcja == "edit" %>
+                  <%= f.submit 'Edytuj', class: "btn btn-outline-success" %>
+              <% else %>
+                  <%= f.submit 'Utwórz', class: "btn btn-outline-success" %>
+              <% end %>
+              
+        </div>
+        <% end %>
+      </div>
+      <%= link_to '[ Anuluj i wróc do listy mebli ]', mebles_path, class: "text-secondary" %>
+  </div>
+    
+</div>
+     

@@ -12,7 +12,7 @@ class MeblesController < ApplicationController
     def create
         @meble = Meble.new(meble_params)
         if @meble.save
-            flash[:notice] = "Artykuł poprawnie utworzono!"
+            flash[:notice] = "Mebel poprawnie utworzono!"
             redirect_to @meble
         else
             render 'new'
@@ -30,7 +30,7 @@ class MeblesController < ApplicationController
     def update
     
         if @meble.update(meble_params)
-            flash[:notice] = "Poprawnie edytowano artykuł."
+            flash[:notice] = "Poprawnie edytowano mebel."
             redirect_to @meble
         else
             render 'edit'
