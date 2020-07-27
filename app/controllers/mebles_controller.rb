@@ -11,6 +11,7 @@ class MeblesController < ApplicationController
 
     def create
         @meble = Meble.new(meble_params)
+        @meble.user = User.first
         if @meble.save
             flash[:notice] = "Mebel poprawnie utworzono!"
             redirect_to @meble
