@@ -26,13 +26,8 @@
           </div>
 
           <div class="form-group row justify-content-center">
-              <% if @akcja == "edit" %>
-                  <%= f.submit 'Edytuj', class: "btn btn-outline-success" %>
-              <% else %>
-                  <%= f.submit 'Utwórz', class: "btn btn-outline-success" %>
-              <% end %>
-              
-        </div>
+            <%= f.submit(@user.new_record? ? 'Utwórz' : "Aktualizuj", class: "btn btn-outline-success") %>         
+          </div>
         <% end %>
       </div>
       <div class="mb-3">

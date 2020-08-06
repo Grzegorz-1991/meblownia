@@ -7,7 +7,7 @@
         <div class="col-8 mt-4">
  <div class="card shadow mb-5 bg-white rounded">
   <div class="card-header font-italic">
-            by El Greju
+            by <%= meb.user.username if meb.user %>
         </div>
         <div class="card-body">
             <h5 class="card-title">Nazwa: <%= link_to meb.nazwa, meble_path(meb), class: "text-success" %></h5>
