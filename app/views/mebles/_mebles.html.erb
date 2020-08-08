@@ -1,0 +1,33 @@
+<div class="container">
+    <% @mebles.each do |meb|%>
+        <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+ <div class="card shadow mb-5 bg-white rounded">
+  <div class="card-header font-italic">
+            by <%= meb.user.username if meb.user %>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Nazwa: <%= link_to meb.nazwa, meble_path(meb), class: "text-success" %></h5>
+            <h5 class="card-title">Rodzaj: <%= truncate(meb.rodzaj, length: 100) %></h5>
+                <button type="button" class="collapsibles">Opis mebla</button>
+                <div class="content">
+                <p class="card-text"><%= meb.opis %></p>
+                </div>
+            <a><%= link_to "Pokaż", meble_path(meb), class: "btn btn-primary" %></a>
+            <a><%= link_to "Edytuj", edit_meble_path(meb), class: "btn btn-primary" %></a>
+            <a><%= link_to "Usuń", meble_path(meb), class: "btn btn-primary", method: :delete, data: {confirm: "Na pewno usunąć?"}  %></a>
+        </div>
+        <div class="card-footer text-muted"> 
+            <a> Stworzono: <%= time_ago_in_words(meb.created_at) %>, 
+            <% if meb.update_at == nil %>
+            Nie edytowano
+            <% else %>
+            Edytowano: <%= time_ago_in_words(meb.update_at) %>
+            <% end %>
+            </a>
+        </div>
+        </div>
+        </div>
+        </div>
+    <% end %>
+</div>
