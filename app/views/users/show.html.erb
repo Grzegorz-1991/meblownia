@@ -1,12 +1,24 @@
 <h1 class = "text-center mt-4">Profil użytkownika <%= @user.username %></h1>
 
-
+<p>
 <% (0...@user.images.count).each do |image|%>
     <div style="width:300px; height:300px;" class = "rounded mx-auto d-block">
-        <%= image_tag(@user.images[image], style: 'display: block; margin: 50px; width: 80%;') %>
+        <%= image_tag(@user.images[image], style: 'display: block; margin: auto; width: 80%;') %>
     </div>
 <% end %>
-
+</p>
+<p>
+<div class="text-center mt-4">
+    <%= link_to "Edytuj profil", edit_user_path(@user), class: "btn btn-primary" %>
+</div>
+</p>
 <h3 class = "text-center mt-4">Meble</h3>
 
+<div class="flickr_pagination">
+    <%= will_paginate @mebles, :container => false %>
+</div>
 <%= render 'mebles/mebles'%>
+
+<div class="flickr_pagination mb-4">
+    <%= will_paginate @mebles, :container => false %>
+</div>

@@ -2,11 +2,11 @@ class MeblesController < ApplicationController
     before_action :set_meble, only: [:show, :edit, :update, :destroy]
 
     def show
- 
+
     end
 
     def index
-        @mebles = Meble.all
+        @mebles = Meble.paginate(page: params[:page], per_page: 5)
     end
 
     def create
@@ -48,6 +48,7 @@ class MeblesController < ApplicationController
     
     def set_meble
         @meble = Meble.find(params[:id])
+    
     end
 
     def meble_params

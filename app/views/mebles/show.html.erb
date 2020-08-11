@@ -2,12 +2,19 @@
 <h2 class = "text-center mt-4"><%= @meble.nazwa %></h2>
 
 <div class="container">
-        <div class="row justify-content-md-center">
+    <div class="row justify-content-md-center">
         <div class="col-8 mt-4">
- <div class="card shadow mb-5 bg-white rounded">
-  <div class="card-header font-italic">
-            by <%= @meble.user.username if @meble.user %>
-        </div>
+            <div class="card shadow mb-5 bg-white rounded">
+                <div class="card-header font-italic">
+                    <% if @meble.user %>
+                        Dodano przez - <%= link_to @meble.user.username, user_path(@meble.user) %>
+                    <% end %>
+                    <% (0...@meble.user.images.count).each do |image|%>
+                        <div style="width:200px; height:200px;" class = "rounded mx-auto d-block">
+                            <%= link_to image_tag(@meble.user.images[image], style: 'display: block; margin: auto; width: 70%;'), @meble.user %>
+                        </div>
+                    <% end %>
+                </div>
         <div class="card-body">
             <h5 class="card-title">Rodzaj: <%= @meble.rodzaj %></h5>
                 <button type="button" class="collapsibles">Opis mebla</button>

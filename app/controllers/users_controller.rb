@@ -6,7 +6,11 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @mebles = @user.mebles
+        @mebles = @user.mebles.paginate(page: params[:page], per_page: 5)
+    end
+
+    def index
+        @user = User.paginate(page: params[:page], per_page: 5)
     end
 
     def create
@@ -27,7 +31,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if @user.update(user_params)
             flash[:notice] = "Poprawnie zaktualizowano użytkownika"
-            redirect_to mebles_path
+            redirect_to @user
         else
             render 'edit'
         end

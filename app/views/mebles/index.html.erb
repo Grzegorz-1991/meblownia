@@ -1,7 +1,15 @@
 
 <h1 class = "text-center mt-4">Lista mebli</h1>
 
+<div class="flickr_pagination">
+    <%= will_paginate @mebles, :container => false %>
+</div>
 <%= render 'mebles' %>
+
+<div class="flickr_pagination mb-4">
+    <%= will_paginate @mebles, :container => false %>
+</div>
+
 <script>
     var coll = document.getElementsByClassName("collapsibles");
     var i;
@@ -18,3 +26,4 @@
     });
     }
 </script>
+
