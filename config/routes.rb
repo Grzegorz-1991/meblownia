@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :mebles
   get 'zapiszsie', to: 'users#nowy'
   resources :users, except: [:nowy]
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 end
