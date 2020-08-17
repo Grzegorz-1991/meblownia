@@ -17,13 +17,15 @@
                 </div>
         <div class="card-body">
             <h5 class="card-title">Rodzaj: <%= @meble.rodzaj %></h5>
-                <button type="button" class="collapsibles">Opis mebla</button>
-                <div class="content">
+            <button type="button" class="collapsibles">Opis mebla</button>
+            <div class="content">
                 <div class="card-text text-left"> <%= simple_format(@meble.opis) %></div>
                 </div>
-            <a><%= link_to "Edytuj", edit_meble_path(@meble), class: "btn btn-primary" %></a>
-            <a><%= link_to "Usuń", meble_path(@meble), class: "btn btn-primary", method: :delete, data: {confirm: "Na pewno usunąć?"}  %></a>
-        </div>
+                <% if logged_in? && (@meble.user == current_user || current_user.admin?) %>
+                    <a><%= link_to "Edytuj", edit_meble_path(@meble), class: "btn btn-primary" %></a>
+                    <a><%= link_to "Usuń", meble_path(@meble), class: "btn btn-primary", method: :delete, data: {confirm: "Na pewno usunąć?"}  %></a>
+                <% end %>
+            </div>
         <div class="card-footer text-muted"> 
             <a> Stworzono: <%= time_ago_in_words(@meble.created_at) %>, 
             <% if @meble.update_at == nil %>

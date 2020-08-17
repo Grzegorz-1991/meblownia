@@ -38,8 +38,17 @@
                 <% end %>
             </h5>
             </p>
-            <a><%= link_to "Profil", user, class: "btn btn-primary" %></a>
-            <a><%= link_to "Edytuj", edit_user_path(user), class: "btn btn-primary" %></a>
+            
+                <a><%= link_to "Profil", user, class: "btn btn-primary" %></a>
+            <% if logged_in? %>
+                <% if user == current_user %>    
+                    <a><%= link_to "Edytuj", edit_user_path(user), class: "btn btn-primary" %></a>
+                <% end %>
+                <%if current_user.admin?%>
+                    <%= link_to "Usuń użytkownika", user_path(user), class: "btn btn-outline-danger",
+                    method: :delete, data: {confirm: "Czy na pewno chcesz usunąć użytkownika i powiązane meble?"} %>
+                <% end %>
+            <% end %>
         </div>
         <div class="card-footer text-muted"> 
             <a> Dołączono: <%= time_ago_in_words(user.created_at) %></a>

@@ -16,8 +16,10 @@
                 <p class="card-text"><%= meb.opis %></p>
                 </div>
             <a><%= link_to "Pokaż", meble_path(meb), class: "btn btn-primary" %></a>
-            <a><%= link_to "Edytuj", edit_meble_path(meb), class: "btn btn-primary" %></a>
-            <a><%= link_to "Usuń", meble_path(meb), class: "btn btn-primary", method: :delete, data: {confirm: "Na pewno usunąć?"}  %></a>
+            <% if logged_in? && (meb.user == current_user || current_user.admin?) %>
+                <a><%= link_to "Edytuj", edit_meble_path(meb), class: "btn btn-primary" %></a>
+                <a><%= link_to "Usuń", meble_path(meb), class: "btn btn-primary", method: :delete, data: {confirm: "Na pewno usunąć?"}  %></a>
+            <% end %>
         </div>
         <div class="card-footer text-muted"> 
             <a> Stworzono: <%= time_ago_in_words(meb.created_at) %>, 

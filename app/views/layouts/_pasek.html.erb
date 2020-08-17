@@ -15,12 +15,36 @@
         <li class="nav-item">
           <%= link_to "Lista mebli", mebles_path, class: "nav-link" %>
         </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "Wylogowanie", logout_path, class: "nav-link", method: :delete %>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= "(Admin)" if current_user.admin? %> Profil - <%= current_user.username %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "Wyświetl profil", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Edytuj profil", edit_user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Usuń profil", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Jesteś pewien?"} %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Logowanie", login_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Zapisz się!", zapiszsie_path, class: "nav-link" %>
+          </li>
+        <% end %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Meble
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to "Dodaj nowy mebel", new_meble_path, class: "dropdown-item" %>
+            <% if logged_in? %>
+              <%= link_to "Dodaj nowy mebel", new_meble_path, class: "dropdown-item" %>
+             <% end %>
             <%= link_to "Lista mebli", mebles_path, class: "dropdown-item" %>
             <a class="dropdown-item" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Realizacje</a>
             <a class="dropdown-item" href="https://www.youtube.com/watch?v=feA64wXhbjo">Cennik</a>
