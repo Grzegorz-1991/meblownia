@@ -4,7 +4,6 @@ class CreateMebles < ActiveRecord::Migration[6.0]
       t.string :nazwa
       t.string :rodzaj
       t.text :opis
-
     end
   end
 end
