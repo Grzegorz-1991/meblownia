@@ -14,6 +14,11 @@
                             <%= link_to image_tag(@meble.user.images[image], style: 'display: block; margin: auto; width: 70%;'), @meble.user %>
                         </div>
                     <% end %>
+                    <% if @meble.categories.any?%>
+                        <div class="mt-2">
+                            <%= render @meble.categories %>
+                        </div>
+                    <% end %>
                 </div>
         <div class="card-body">
             <h5 class="card-title">Rodzaj: <%= @meble.rodzaj %></h5>

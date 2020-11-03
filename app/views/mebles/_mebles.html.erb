@@ -7,6 +7,11 @@
             <% if meb.user %>
                 Dodano przez - <%= link_to meb.user.username, user_path(meb.user) %>
             <% end %>
+            <% if meb.categories.any?%>
+                <div class="mt-2">
+                    <%= render meb.categories %>
+                </div>
+            <% end %>
         </div>
         <div class="card-body">
             <h5 class="card-title">Nazwa: <%= link_to meb.nazwa, meble_path(meb), class: "text-success" %></h5>

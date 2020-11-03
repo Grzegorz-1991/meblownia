@@ -53,7 +53,7 @@ class MeblesController < ApplicationController
     end
 
     def meble_params
-        params.require(:meble).permit(:nazwa,:rodzaj,:opis)
+        params.require(:meble).permit(:nazwa,:rodzaj,:opis, category_ids: [])
     end
 
     def require_same_user
